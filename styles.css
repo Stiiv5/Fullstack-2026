@@ -1,0 +1,39 @@
+body {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 40px;
+}
+
+h1 {
+    color: #4db8ff;
+    border-bottom: 2px solid #4db8ff;
+    padding-bottom: 10px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #2d2d2d;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+th{
+    background-color: #4db8ff;
+    color: #1e1e1e;
+}
+
+tr:hover {
+    background-color: #3d3d3d;
+}
+
+.mis-metas{
+    color: #ffcc00;
+    font-weight: bold;
+}
