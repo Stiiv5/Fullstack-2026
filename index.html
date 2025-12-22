@@ -18,6 +18,13 @@
         
     </ol>
 
+    <div id="formulario-registro">
+        <h3>Registrar Nuevo Empleado</h3>
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="number" id="salario" placeholder="Salario">
+        <button onclick="guardarEmpleado()">Guardar en Base de Datos</button>
+    </div>
+
     <h3>Tecnologías Aprendidas:</h3>
     <table border="1"> <thead>
         <tr><th>Tecnología</th> <th>Nivel de Dominio</th>
@@ -36,8 +43,13 @@
             <td>FastAPI</td>
             <td>Basico (Creación de rutas)</td>
         </tr>
-    </tbody>
-    </table>
+        
+    </tbody>  
+    <tbody id="tabla-empleados"></tbody>
 
+    </table>
+    
+
+    <script src="script.js"></script>
 </body>
 </html>

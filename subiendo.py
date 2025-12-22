@@ -1,7 +1,19 @@
 from fastapi import FastAPI
 import sqlite3
+from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+
+)
 
 @app.get("/empleados")
 def obtener_empleados_de_la_db():
@@ -29,15 +41,20 @@ def obtener_empleados_de_la_db():
 
     return lista_final
 
-@app.get("/crear_prueba")
-def crear_prueba():
+class EmpleadoSchema(BaseModel):
+    nombre: str
+    salario: float
+
+@app.post("/nuevo-empleado")
+def guardar_empleado(empleado: EmpleadoSchema):
     conexion = sqlite3.connect("mi_empresa.db")
     cursor = conexion.cursor()
 
-    #Insertar empleado de prueba
-    cursor.execute("INSERT INTO empleados (nombre, puesto, salario) VALUES ('Stiiv', 'Futuro Fullstack', 5000)")
+    cursor.execute(
+        "INSERT INTO empleados (nombre, salario) VALUES (?, ?)", (empleado.nombre, empleado.salario)
+    )
 
     conexion.commit()
-
     conexion.close()
-    return {"Mensaje": "Empleado de prueba creado con éxito"}
+    return {"Mensaje": "¡Empleado guardado existosamente!"}
+
