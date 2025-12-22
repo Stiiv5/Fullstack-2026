@@ -34,7 +34,6 @@ def obtener_empleados_de_la_db():
 
     for fila in datos:
         lista_final.append({
-            "id": fila[0],
             "nombre": fila[1],
             "saladio": fila[2]
         })
