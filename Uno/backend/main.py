@@ -10,7 +10,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
@@ -53,3 +53,13 @@ def crear_empleado(emp: Empleado):
     conn.commit()
     conn.close()
     return {"status": "ok"}
+
+@app.delete("/eliminar-empleado/{empleado_id}")
+def eliminar_empleado(empleado_id: int):
+    conn = sqlite3.connect("empresa.db")
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM empleados WHERE id = ?", (empleado_id,))
+    conn.commit()
+    conn.close()
+    return {"status": "borrado"}
+
