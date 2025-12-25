@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom' // Muy Importante
 
 function Navbar(){
     return(
-        <nav className = "bg-blue-800 border-b border-gray-700 p-4 mb-8">
+        <nav className = "bg-blue-800 border-b border-gray-700 p-4 mb-8 fixed top-0 min-w-screen">
             <div className = "max-w-4xl mx-auto flex justify-between items-center">
                 <div className = "flex items-center space-x-2">
                     <Link to="/" className = "bg-blue-600 p-1.5 rounded-lg">

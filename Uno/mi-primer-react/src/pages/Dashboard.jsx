@@ -62,7 +62,7 @@ function App() {
         
     <div className="min-h-screen bg-gray-900 text-white p-8 font-sans">
     
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto my-8">
           <header className="mb-10 text-center">
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent mb-2">
             NullVoice: Gestión Pro

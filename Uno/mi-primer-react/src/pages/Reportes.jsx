@@ -14,7 +14,7 @@ function Reportes(){
     const salarioPromedio = totalEmpleados > 0 ? (nominaTotal / totalEmpleados).toFixed(2) : 0;
 
     return (
-        <div className = "animate-fadeIn">
+        <div className = "animate-fadeIn mt-15">
             <h2 className = "text-3xl font-bold text-blue-400 mb-6">Análisis de Nómina</h2>
 
             <div className = "grid grid-cols-1 md:grid-cols-3 gap-6">
