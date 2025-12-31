@@ -1,8 +1,8 @@
 function FilaEmpleado({nombre, puesto, salario, alBorrar}) {
     return (
         <tr className="hover:bg-gray-700/30 transition-colors group">
-            <td className="px-6 py-4 font-medium text-blue-100">{nombre}</td>
-            <td className="px-6 py-4 text-gray-400">{puesto}</td>
+            <td className="px-6 py-4 font-medium text-gray-700 dark:text-white">{nombre}</td>
+            <td className="px-6 py-4 text-gray-500 dark:text-white">{puesto}</td>
             <td className="px-6 py-4 text-emerald-400 font-mono font-bold">${salario}</td>
             <td className="px-6 py-4 text-right">
                 <button 
