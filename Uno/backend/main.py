@@ -1,7 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import sqlite3
+
+
 
 app = FastAPI()
 
@@ -62,4 +64,32 @@ def eliminar_empleado(empleado_id: int):
     conn.commit()
     conn.close()
     return {"status": "borrado"}
+
+@app.put("/actualizarempleado/{empleado_id}")
+def actualizar_empleado(empleado_id: int, empleado: Empleado):
+    try:
+        with sqlite3.connect("empresa.db") as conexion:
+            cursor = conexion.cursor()
+
+            cursor.execute("""
+                        UPDATE empleados
+                           SET nombre = ?, puesto = ?, salario = ?
+                           WHERE id = ?
+                           """, (empleado.nombre, empleado.puesto, empleado.salario))
+            
+            if cursor.rowcount == 0:
+                conexion.close()
+                raise HTTPException(status_code = 404, detail="Empleado no encontrado")
+            
+            conexion.commit()
+            conexion.close()
+        
+        return {"message": "Empleado actualizado con éxito."}
+    
+    except sqlite3.Error as e:
+        if conexion:
+            conexion.close()
+        raise HTTPException(status_code=500, detail=f"Error de base de datos: {e}")
+
+
 

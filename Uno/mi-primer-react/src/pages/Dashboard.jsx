@@ -10,6 +10,7 @@ function Dashboard() {
   const [empleados, setEmpleados] = useState([]);  
   const [cargando, setCargando] = useState(true);
   const [busqueda, setBusqueda] = useState('');
+  const [editandoId, setEditandoId] = useState(null);
   
   // Variables para el formulario
   const [nombre, setNombre] = useState('');
@@ -121,7 +122,7 @@ function Dashboard() {
     emp.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
     emp.puesto.toLowerCase().includes(busqueda.toLowerCase())
   );
-  
+   
   
   return (  
         
@@ -155,10 +156,12 @@ function Dashboard() {
             />
             <button 
               type="submit" 
-              className="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-blue-500/20 transition-all active:scale-95"
+              className="w-full py-3 rounded-xl font-bold transition-all bg-blue-600 hover:bg-blue-700 text-white"
             >
-              Añadir +
+              {editandoId ? '💾 Guardar Cambios' : '➕ Registrar Usuario'}
             </button>
+            
+
           </form>
         </section>
 
